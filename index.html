@@ -209,10 +209,15 @@
   .hero-slideshow::before {
     content: '';
     position: absolute; inset: 0; z-index: 2;
+    background: none;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 3;
+    pointer-events: none;
     background: linear-gradient(to right, 
-      rgba(13,13,13,0.85) 0%, 
-      rgba(13,13,13,0.6) 40%, 
-      rgba(13,13,13,0.15) 70%,
+      rgba(13,13,13,0.88) 0%, 
+      rgba(13,13,13,0.65) 40%, 
+      rgba(13,13,13,0.2) 70%,
       rgba(13,13,13,0.05) 100%),
       linear-gradient(to top, rgba(13,13,13,0.6) 0%, transparent 40%);
   }
@@ -652,6 +657,7 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-grid-overlay"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-accent-shape"></div>
   <div class="hero-accent-shape2"></div>
 
