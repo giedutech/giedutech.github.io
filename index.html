@@ -198,6 +198,47 @@
     letter-spacing: 0.1em; margin-top: 4px;
   }
 
+  /* ── HERO SLIDESHOW ── */
+  .hero-slideshow {
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%; height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-slideshow::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(to right, var(--black) 0%, transparent 30%),
+                linear-gradient(to top, var(--black) 0%, transparent 25%);
+  }
+  .slide {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .slide.active { opacity: 1; }
+  .slide-dots {
+    position: absolute;
+    bottom: 32px; right: 48px;
+    display: flex; gap: 8px; z-index: 10;
+    pointer-events: all;
+  }
+  .slide-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    border: none;
+  }
+  .slide-dot.active {
+    background: white;
+    transform: scale(1.4);
+  }
+
   /* ── SECTION COMMON ── */
   section { padding: 100px 48px; }
   .section-tag {
@@ -618,6 +659,21 @@
       <div class="hero-stat-label">EXPERIENCE</div>
     </div>
   </div>
+
+  <!-- 슬라이드쇼 -->
+  <div class="hero-slideshow">
+    <div class="slide active" style="background-image: url('photo1.jpg')"></div>
+    <div class="slide" style="background-image: url('photo2.jpg')"></div>
+    <div class="slide" style="background-image: url('photo3.jpg')"></div>
+    <div class="slide" style="background-image: url('photo4.jpg')"></div>
+  </div>
+  <div class="slide-dots">
+    <button class="slide-dot active" onclick="goSlide(0)"></button>
+    <button class="slide-dot" onclick="goSlide(1)"></button>
+    <button class="slide-dot" onclick="goSlide(2)"></button>
+    <button class="slide-dot" onclick="goSlide(3)"></button>
+  </div>
+
 </section>
 
 <!-- CATEGORIES -->
@@ -988,6 +1044,23 @@
 </footer>
 
 <script>
+  // Slideshow
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.slide-dot');
+
+  function goSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  setInterval(() => {
+    goSlide((currentSlide + 1) % slides.length);
+  }, 4000);
+
   // Tab switching
   function switchTab(id, btn) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
