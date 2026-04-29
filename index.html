@@ -202,15 +202,20 @@
   .hero-slideshow {
     position: absolute;
     top: 0; right: 0;
-    width: 45%; height: 100%;
+    width: 70%; height: 100%;
     overflow: hidden;
     pointer-events: none;
   }
   .hero-slideshow::before {
     content: '';
     position: absolute; inset: 0; z-index: 2;
-    background: linear-gradient(to right, var(--black) 0%, rgba(13,13,13,0.6) 45%, transparent 70%),
-                linear-gradient(to top, var(--black) 0%, transparent 30%);
+    background: linear-gradient(to right, 
+      var(--black) 0%, 
+      var(--black) 20%, 
+      rgba(13,13,13,0.85) 50%, 
+      rgba(13,13,13,0.4) 75%, 
+      transparent 100%),
+      linear-gradient(to top, var(--black) 0%, transparent 30%);
   }
   .slide {
     position: absolute; inset: 0;
