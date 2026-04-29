@@ -92,12 +92,30 @@
     overflow: hidden;
   }
   .hero-grid-overlay {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; z-index: 2;
     background-image:
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to right, 
+      rgba(13,13,13,0.88) 0%, 
+      rgba(13,13,13,0.65) 40%, 
+      rgba(13,13,13,0.2) 70%,
+      rgba(13,13,13,0.05) 100%),
+      linear-gradient(to top, rgba(13,13,13,0.6) 0%, transparent 40%);
+  }
+  .hero-content {
+    position: relative; z-index: 4;
+  }
+  .hero-tag { z-index: 4; }
+  .hero-title { z-index: 4; }
+  .hero-subtitle-kr { z-index: 4; }
+  .hero-desc { z-index: 4; }
+  .hero-buttons { z-index: 4; }
   .hero-accent-shape {
     position: absolute;
     top: 80px; right: 80px;
@@ -205,12 +223,9 @@
     width: 100%; height: 100%;
     overflow: hidden;
     pointer-events: none;
+    z-index: 1;
   }
-  .hero-slideshow::before {
-    content: '';
-    position: absolute; inset: 0; z-index: 2;
-    background: none;
-  }
+  .hero-slideshow::before { content: none; }
   .hero-overlay {
     position: absolute; inset: 0; z-index: 3;
     pointer-events: none;
@@ -656,18 +671,29 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-grid-overlay"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-accent-shape"></div>
-  <div class="hero-accent-shape2"></div>
 
-  <div class="hero-tag">4th Industrial Revolution · Creative Convergence</div>
-  <h1 class="hero-title">Future<br><span>Skills</span><br>Begin Here</h1>
-  <p class="hero-subtitle-kr">4차산업 창의융합 교육센터</p>
-  <p class="hero-desc">AI·로봇·코딩·메이커 교육부터 경진대회·이벤트·시험인증까지.<br>미래를 만드는 사람들과 함께합니다.</p>
-  <div class="hero-buttons">
-    <a href="#categories" class="btn-primary">프로그램 보기</a>
-    <a href="#references" class="btn-outline">수행 레퍼런스</a>
+  <!-- 슬라이드쇼 (맨 뒤) -->
+  <div class="hero-slideshow">
+    <div class="slide active" style="background-image: url('photo1.jpg')"></div>
+    <div class="slide" style="background-image: url('photo2.jpg')"></div>
+    <div class="slide" style="background-image: url('photo3.jpg')"></div>
+    <div class="slide" style="background-image: url('photo4.jpg')"></div>
+  </div>
+
+  <!-- 오버레이 (항상 고정) -->
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-overlay"></div>
+
+  <!-- 텍스트 컨텐츠 (맨 앞) -->
+  <div class="hero-content">
+    <div class="hero-tag">4th Industrial Revolution · Creative Convergence</div>
+    <h1 class="hero-title">Future<br><span>Skills</span><br>Begin Here</h1>
+    <p class="hero-subtitle-kr">4차산업 창의융합 교육센터</p>
+    <p class="hero-desc">AI·로봇·코딩·메이커 교육부터 경진대회·이벤트·시험인증까지.<br>미래를 만드는 사람들과 함께합니다.</p>
+    <div class="hero-buttons">
+      <a href="#categories" class="btn-primary">프로그램 보기</a>
+      <a href="#references" class="btn-outline">수행 레퍼런스</a>
+    </div>
   </div>
 
   <div class="hero-stats">
@@ -685,13 +711,6 @@
     </div>
   </div>
 
-  <!-- 슬라이드쇼 -->
-  <div class="hero-slideshow">
-    <div class="slide active" style="background-image: url('photo1.jpg')"></div>
-    <div class="slide" style="background-image: url('photo2.jpg')"></div>
-    <div class="slide" style="background-image: url('photo3.jpg')"></div>
-    <div class="slide" style="background-image: url('photo4.jpg')"></div>
-  </div>
   <div class="slide-dots">
     <button class="slide-dot active" onclick="goSlide(0)"></button>
     <button class="slide-dot" onclick="goSlide(1)"></button>
