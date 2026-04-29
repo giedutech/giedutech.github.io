@@ -202,7 +202,7 @@
   .hero-slideshow {
     position: absolute;
     top: 0; right: 0;
-    width: 70%; height: 100%;
+    width: 100%; height: 100%;
     overflow: hidden;
     pointer-events: none;
   }
@@ -210,12 +210,11 @@
     content: '';
     position: absolute; inset: 0; z-index: 2;
     background: linear-gradient(to right, 
-      var(--black) 0%, 
-      var(--black) 20%, 
-      rgba(13,13,13,0.85) 50%, 
-      rgba(13,13,13,0.4) 75%, 
-      transparent 100%),
-      linear-gradient(to top, var(--black) 0%, transparent 30%);
+      rgba(13,13,13,0.85) 0%, 
+      rgba(13,13,13,0.6) 40%, 
+      rgba(13,13,13,0.15) 70%,
+      rgba(13,13,13,0.05) 100%),
+      linear-gradient(to top, rgba(13,13,13,0.6) 0%, transparent 40%);
   }
   .slide {
     position: absolute; inset: 0;
